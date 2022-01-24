@@ -20,10 +20,10 @@ import com.shenwoo.bookrental.proc.MenubookEdit;
 public class Program {
 	public void startProgram() {
 		ArrayList<Member> members = new ArrayList<Member>();
-		members.add(new Member("1", "김씨", "010-1111-1111","0","정보없음"));
-		members.add(new Member("2", "이씨", "010-2222-2222","0","정보없음"));
-		members.add(new Member("3", "박씨", "010-3333-3333","0","정보없음"));
-		members.add(new Member("4", "최씨", "010-4444-4444","0","정보없음"));
+		members.add(new Member("1", "김씨", "010-1111-1111"));
+		members.add(new Member("2", "이씨", "010-2222-2222"));
+		members.add(new Member("3", "박씨", "010-3333-3333"));
+		members.add(new Member("4", "최씨", "010-4444-4444"));
 
 		ArrayList<Book> books = new ArrayList<Book>();
 		books.add(new Book("1", "이누야사 1권", "미대여"));

@@ -17,10 +17,8 @@ public class MenuRegister {
 
 		int member = members.size() + 1; // 회원번호값 형변환을 이용해서 구하기
 		String str1 = Integer.toString(member);
-		String str2 = "0";
-		String str3 = "정보없음";
 
-		members.add(new Member(str1, name, tel, str2, str3)); // 매개변수 사용해서 회원 등록
+		members.add(new Member(str1, name, tel)); // 매개변수 사용해서 회원 등록
 
 		System.out.println("회원등록이 완료 되었습니다. 회원번호는 " + str1 + " 입니다.");
 	}

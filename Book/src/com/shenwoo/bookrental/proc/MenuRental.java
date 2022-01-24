@@ -65,14 +65,13 @@ public class MenuRental {
 				System.out.println("책이 대여중 입니다.");
 			} else {
 				System.out.println(books.get(bookNum).getTitle()+" 대여가 완료 되었습니다.");				
-				String rentalinfo = books.get(bookNum).getNumber();
-				members.get(memberNum).setRental(rentalinfo);
-				
-				String rentalbookinfo = books.get(bookNum).getTitle();
-				members.get(memberNum).setRentalbook(rentalbookinfo);
+
+				Book b = books.get(bookNum);
+				members.get(memberNum).setRentalbook(b);
 				
 				books.get(memberNum).setRental("대여중");
 				members.get(memberNum).info();
+				
 			}
 		}
 	}

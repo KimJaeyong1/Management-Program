@@ -4,16 +4,7 @@ public class Member {
 	private String number;
 	private String name;
 	private String tel;
-	private String rental;
-	private String rentalbook;
-
-	public Member(String number, String name, String tel, String rental, String rentalbook) {
-		this.number = number;
-		this.name = name;
-		this.tel = tel;
-		this.rental = rental;
-		this.rentalbook = rentalbook;
-	}
+	private Book rentalbook;
 	
 	public Member(String number, String name, String tel) {
 		this.number = number;
@@ -21,18 +12,21 @@ public class Member {
 		this.tel = tel;
 	}
 	
-	public Member(String name, String tel) {
+	public Member(String number, String name, String tel, Book rentalBook) {
+		this.number = number;
 		this.name = name;
 		this.tel = tel;
-	}
-	
-	public Member(String rental) {
-		this.rental = rental;
+		this.rentalbook = rentalBook;
 	}
 
+
 	public void info() {
-		System.out.println(
-				"[회원번호: " + number + " / 이름: " + name + " / 연락처: " + tel + " / 대여한책번호: " + rental + " / 대여한책이름: " + rentalbook+"]");
+		if(rentalbook!=null) {
+			System.out.println("[회원번호: " + number + " / 이름: " + name + " / 연락처: " + tel + " / 대여한책번호: " + rentalbook.getNumber() + " / 대여한책이름: " + rentalbook.getTitle()+"]");			
+		} else {
+			System.out.println("[회원번호: " + number + " / 이름: " + name + " / 연락처: " + tel + " / 대여한책번호: " +  "0  / 대여한책이름: 정보없음]");			
+			
+		}
 	}
 
 	public String getNumber() {
@@ -47,11 +41,7 @@ public class Member {
 		return tel;
 	}
 
-	public String getRental() {
-		return rental;
-	}
-
-	public String getRentalbook() {
+	public Book getRentalbook() {
 		return rentalbook;
 	}
 
@@ -66,12 +56,9 @@ public class Member {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-
-	public void setRental(String rental) {
-		this.rental = rental;
-	}
-
-	public void setRentalbook(String rentalbook) {
+	
+	public void setRentalbook(Book rentalbook) {
 		this.rentalbook = rentalbook;
 	}
+
 }

@@ -60,11 +60,11 @@ public class MenuReturn {
 		
 		// 회원정보의 책 정보 변경, 책 대여상태 변경
 		if (changeBook) {
-			if(members.get(memberNum).getRental().equals(books.get(returnBook).getNumber())) {
+			if(members.get(memberNum).getRentalbook().getNumber().equals(books.get(returnBook).getNumber())) {
 				System.out.println(books.get(returnBook).getTitle()+" 반납이 완료 되었습니다.");
+				
 				// 회원 대여 정보 변경
-				members.get(memberNum).setRental("0");
-				members.get(memberNum).setRentalbook("정보없음");
+				members.get(memberNum).setRentalbook(null);
 				
 				// 책 대여 상태 변경
 				books.get(returnBook).setRental("미대여");
