@@ -1,32 +1,38 @@
 package com.shenwoo.bookrental.data;
 
+import java.util.ArrayList;
+
 public class Member {
 	private String number;
 	private String name;
 	private String tel;
-	private Book rentalbook;
+	private ArrayList<Book> rentalbooks = new ArrayList<Book>();
 	
 	public Member(String number, String name, String tel) {
 		this.number = number;
 		this.name = name;
 		this.tel = tel;
 	}
-	
-	public Member(String number, String name, String tel, Book rentalBook) {
-		this.number = number;
-		this.name = name;
-		this.tel = tel;
-		this.rentalbook = rentalBook;
+
+	public ArrayList<Book> getRentalbooks() {
+		return rentalbooks;
 	}
 
+	public void setRentalbooks(ArrayList<Book> rentalbooks) {
+		this.rentalbooks = rentalbooks;
+	}
 
 	public void info() {
-		if(rentalbook!=null) {
-			System.out.println("[회원번호: " + number + " / 이름: " + name + " / 연락처: " + tel + " / 대여한책번호: " + rentalbook.getNumber() + " / 대여한책이름: " + rentalbook.getTitle()+"]");			
+		if(rentalbooks != null) {
+			System.out.println("[회원번호: " + number + " / 이름: " + name + " / 연락처: " + tel + "]");
+			showRentalBooks();
 		} else {
-			System.out.println("[회원번호: " + number + " / 이름: " + name + " / 연락처: " + tel + " / 대여한책번호: " +  "0  / 대여한책이름: 정보없음]");			
-			
+			System.out.println("[회원번호: " + number + " / 이름: " + name + " / 연락처: " + tel +" ]");			
 		}
+	}
+	
+	public void memberInfo() {
+		System.out.println("[회원번호: " + number + " / 이름: " + name + " / 연락처: " + tel + "]");
 	}
 
 	public String getNumber() {
@@ -41,10 +47,6 @@ public class Member {
 		return tel;
 	}
 
-	public Book getRentalbook() {
-		return rentalbook;
-	}
-
 	public void setNumber(String number) {
 		this.number = number;
 	}
@@ -57,8 +59,16 @@ public class Member {
 		this.tel = tel;
 	}
 	
-	public void setRentalbook(Book rentalbook) {
-		this.rentalbook = rentalbook;
+	public void addRentalBook(Book addRentalBook) {
+		rentalbooks.add(addRentalBook);
 	}
-
+	
+	public void showRentalBooks() {
+		System.out.println("*-----------------------------대여한 책목록------------------------------*");
+		for(Book a :rentalbooks) {
+			System.out.println(a.getTitle());
+		}
+		System.out.println("*--------------------------------------------------------------------*");
+	}
 }
+

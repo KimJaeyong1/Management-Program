@@ -51,7 +51,7 @@ public class Program {
 				break;
 			case "3":
 				MenuList menulist = new MenuList();
-				menulist.proList(books);
+				menulist.proList(members, books);
 				break;
 			case "4":
 				MenuInfo menuinfo = new MenuInfo();

@@ -10,6 +10,8 @@ public class MenuRental {
 	public void proRental(ArrayList<Member> members, ArrayList<Book> books) {
 		Scanner sc = new Scanner (System.in);
 		
+		Member selectedMember = null;
+		
 		boolean memberCheck = false;
 		boolean bookCheck = false;
 		boolean rentalCheck = false;
@@ -21,16 +23,15 @@ public class MenuRental {
 		
 		
 		// 회원 번호 체크
-		int memberNum = -1;
 		for (int i = 0; i < members.size(); i++) {
 			if (members.get(i).getNumber().equals(number)) {
-				memberNum = i;
 				memberCheck = true;
+				selectedMember = members.get(i);
 			}
 		}
 		
 		if(memberCheck) {
-			members.get(memberNum).info();
+			selectedMember.info();
 			bookCheck = true;
 		} else {
 			System.out.println(number+"번 회원님은 등록된 회원이 아닙니다.");
@@ -41,13 +42,14 @@ public class MenuRental {
 		System.out.println("대여하실 책 번호를 입력 해주세요.");
 		String bookNumber = sc.next();
 		
+		
+		Book selectedBook = null;
 		// 책 번호 체크
-		int bookNum = -1;
 		if (bookCheck) {
 			for (int i = 0; i < books.size(); i++) {
 				if (books.get(i).getNumber().equals(bookNumber)) {
-					bookNum = i;
 					rentalCheck = true;
+					selectedBook = books.get(i);
 				}
 			}
 		}
@@ -61,16 +63,17 @@ public class MenuRental {
 		
 		// 회원 책정보 변경, 책의 대여여부 변경
 		if (changeBook) {
-			if(books.get(bookNum).getRental().equals("대여중")) {
+			if(selectedBook.getRental().equals("대여중")) {
 				System.out.println("책이 대여중 입니다.");
 			} else {
-				System.out.println(books.get(bookNum).getTitle()+" 대여가 완료 되었습니다.");				
+				System.out.println(selectedBook.getTitle()+" 대여가 완료 되었습니다.");				
 
-				Book b = books.get(bookNum);
-				members.get(memberNum).setRentalbook(b);
+				selectedMember.addRentalBook(selectedBook);
 				
-				books.get(memberNum).setRental("대여중");
-				members.get(memberNum).info();
+				
+				selectedBook.setRental("대여중");
+				selectedBook.setRentalMember(selectedMember);
+				selectedMember.info();
 				
 			}
 		}
